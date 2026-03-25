@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS players (
     approval_status ENUM('pending', 'approved', 'rejected') NOT NULL DEFAULT 'pending',
     availability ENUM('available', 'injured', 'suspended') NOT NULL DEFAULT 'available',
     bio VARCHAR(255) NULL,
+    profile_image VARCHAR(255) NULL,
     matches_played INT UNSIGNED NOT NULL DEFAULT 0,
     goals INT UNSIGNED NOT NULL DEFAULT 0,
     assists INT UNSIGNED NOT NULL DEFAULT 0,

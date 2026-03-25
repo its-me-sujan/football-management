@@ -136,7 +136,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 
 <h2 class="h5">Recent Lineups</h2>
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead>
             <tr><th>ID</th><th>Team</th><th>Formation</th><th>Created</th></tr>
         </thead>
@@ -146,7 +146,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
                     <td><?= e((string) $row['id']) ?></td>
                     <td><?= e($row['team_name']) ?></td>
                     <td><?= e($row['formation']) ?></td>
-                    <td><?= e($row['created_at']) ?></td>
+                    <td><?= e(format_datetime($row['created_at'])) ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

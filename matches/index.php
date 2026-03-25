@@ -26,7 +26,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
     <div class="alert alert-info">No matches scheduled yet.</div>
 <?php else: ?>
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
+        <table class="table table-striped align-middle js-paginated-table">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -39,7 +39,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
             <tbody>
                 <?php foreach ($matches as $match): ?>
                     <tr>
-                        <td><?= e($match['match_date']) ?></td>
+                        <td><?= e(format_datetime($match['match_date'])) ?></td>
                         <td><?= e($match['competition_name'] ?? '-') ?></td>
                         <td><?= e($match['home_team'] . ' vs ' . $match['away_team']) ?></td>
                         <td><?= e($match['status']) ?></td>

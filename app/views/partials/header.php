@@ -1,32 +1,43 @@
 <?php
 declare(strict_types=1);
 
-$pageTitle = $pageTitle ?? 'Football Management';
+$pageTitle = $pageTitle ?? 'Tacticus';
 $flashSuccess = get_flash('success');
 $flashError = get_flash('error');
 $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?? '';
 $isActive = static function (string $segment) use ($currentPath): string {
     return str_contains($currentPath, $segment) ? 'active' : '';
 };
+$fullTitle = $pageTitle === 'Tacticus' ? 'Tacticus' : $pageTitle . ' | Tacticus';
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= e($pageTitle) ?></title>
+    <meta name="theme-color" content="#14191e">
+    <meta name="application-name" content="Tacticus">
+    <meta name="apple-mobile-web-app-title" content="Tacticus">
+    <link rel="icon" href="<?= e(app_url('/assets/image/logo.png')) ?>" type="image/png">
+    <link rel="shortcut icon" href="<?= e(app_url('/assets/image/logo.png')) ?>" type="image/png">
+    <link rel="apple-touch-icon" href="<?= e(app_url('/assets/image/logo.png')) ?>">
+    <title><?= e($fullTitle) ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="<?= e(app_url('/assets/css/style.css')) ?>">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg custom-navbar sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="<?= e(app_url('/index.php')) ?>">Football Management</a>
+        <a class="navbar-brand" href="<?= e(app_url('/index.php')) ?>">
+            <img class="navbar-brand-logo" src="<?= e(app_url('/assets/image/logo.png')) ?>" alt="Tacticus logo">
+            <span>Tacticus</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav nav-main-links mx-lg-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link <?= $isActive('/players/') ?>" href="<?= e(app_url('/players/index.php')) ?>">Players</a>
                 </li>
@@ -44,7 +55,7 @@ $isActive = static function (string $segment) use ($currentPath): string {
                 </li>
             </ul>
 
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <ul class="navbar-nav nav-auth-links ms-lg-auto align-items-lg-center gap-lg-2">
                 <?php if (is_logged_in()): ?>
                     <li class="nav-item">
                         <span class="nav-role-badge"><?= e(ucfirst(current_role())) ?></span>

@@ -40,7 +40,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
     <div class="alert alert-info">No players added yet.</div>
 <?php else: ?>
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
+        <table class="table table-striped align-middle js-paginated-table">
             <thead>
             <tr>
                 <th>Name</th>
@@ -59,7 +59,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
                     <td><?= e($player['jersey_number'] === null ? '-' : (string) $player['jersey_number']) ?></td>
                     <td><?= e($player['team_name'] ?? 'Unassigned') ?></td>
                     <td><?= e($player['coach_name'] ?? 'Unassigned') ?></td>
-                    <td><?= e('M: ' . $player['matches_played'] . ', G: ' . $player['goals'] . ', A: ' . $player['assists']) ?></td>
+                    <td><?= e('⚔️ ' . $player['matches_played'] . ', ⚽ ' . $player['goals'] . ', 👥 ' . $player['assists']) ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

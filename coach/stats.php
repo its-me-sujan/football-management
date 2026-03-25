@@ -45,14 +45,14 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 <h1 class="h3 mb-3">Team Stats</h1>
 
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead>
             <tr>
                 <th>Team</th>
                 <th>Squad</th>
-                <th>Total Matches</th>
-                <th>Total Goals</th>
-                <th>Total Assists</th>
+                <th>⚔️ Matches</th>
+                <th>⚽ Goals</th>
+                <th>👥 Assists</th>
             </tr>
         </thead>
         <tbody>

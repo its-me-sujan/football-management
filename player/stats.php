@@ -42,23 +42,23 @@ require_once __DIR__ . '/../app/views/partials/header.php';
             <p class="mb-1"><strong>Position:</strong> <?= e($myStats['position']) ?></p>
             <p class="mb-1"><strong>Jersey:</strong> <?= e($myStats['jersey_number'] === null ? '-' : (string) $myStats['jersey_number']) ?></p>
             <p class="mb-1"><strong>Team:</strong> <?= e($myStats['team_name'] ?? 'Unassigned') ?></p>
-            <p class="mb-0"><strong>Matches:</strong> <?= e((string) $myStats['matches_played']) ?>,
-                <strong>Goals:</strong> <?= e((string) $myStats['goals']) ?>,
-                <strong>Assists:</strong> <?= e((string) $myStats['assists']) ?></p>
+            <p class="mb-0"><strong>⚔️ Matches:</strong> <?= e((string) $myStats['matches_played']) ?>,
+                <strong>⚽ Goals:</strong> <?= e((string) $myStats['goals']) ?>,
+                <strong>👥 Assists:</strong> <?= e((string) $myStats['assists']) ?></p>
         </div>
     </div>
 <?php endif; ?>
 
 <h2 class="h5">Top Players</h2>
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead>
         <tr>
             <th>Name</th>
             <th>Position</th>
-            <th>Matches</th>
-            <th>Goals</th>
-            <th>Assists</th>
+            <th>⚔️ Matches</th>
+            <th>⚽ Goals</th>
+            <th>👥 Assists</th>
         </tr>
         </thead>
         <tbody>

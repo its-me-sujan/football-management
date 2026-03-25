@@ -66,7 +66,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 <h1 class="h3 mb-3">Standings</h1>
 
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead>
             <tr>
                 <th>#</th>

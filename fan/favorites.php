@@ -48,7 +48,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 <h1 class="h3 mb-3">Follow Favorite Teams</h1>
 
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead><tr><th>Team</th><th>Action</th></tr></thead>
         <tbody>
             <?php foreach ($teams as $team): ?>

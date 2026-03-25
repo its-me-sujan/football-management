@@ -1,6 +1,27 @@
 // Project-wide JavaScript entry point.
 
 (function () {
+	function initTables() {
+		if (!window.jQuery || !window.jQuery.fn || !window.jQuery.fn.DataTable) {
+			return;
+		}
+
+		window.jQuery('table.js-paginated-table').each(function () {
+			var tableElement = window.jQuery(this);
+			if (window.jQuery.fn.DataTable.isDataTable(this)) {
+				return;
+			}
+
+			tableElement.DataTable({
+				order: [],
+				pageLength: 10,
+				lengthMenu: [[10, 25, 50], [10, 25, 50]]
+			});
+		});
+	}
+
+	initTables();
+
 	var weatherSection = document.getElementById('weather-section');
 	var weatherContainer = document.getElementById('weather-forecast');
 

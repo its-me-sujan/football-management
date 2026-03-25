@@ -37,7 +37,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
     <div class="alert alert-info">No actions are visible for your current role.</div>
 <?php else: ?>
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
+        <table class="table table-striped align-middle js-paginated-table">
             <thead>
                 <tr>
                     <th scope="col">Date</th>

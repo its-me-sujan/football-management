@@ -39,8 +39,8 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 
 <h2 class="h5">Top Scorers</h2>
 <div class="table-responsive mb-4">
-    <table class="table table-striped align-middle">
-        <thead><tr><th>Name</th><th>Goals</th><th>Assists</th></tr></thead>
+    <table class="table table-striped align-middle js-paginated-table">
+        <thead><tr><th>Name</th><th>⚽ Goals</th><th>👥 Assists</th></tr></thead>
         <tbody>
             <?php foreach ($topScorers as $p): ?>
                 <tr><td><?= e($p['name']) ?></td><td><?= e((string) $p['goals']) ?></td><td><?= e((string) $p['assists']) ?></td></tr>
@@ -51,12 +51,12 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 
 <h2 class="h5">Recent Matches</h2>
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead><tr><th>Date</th><th>Status</th><th>Result</th></tr></thead>
         <tbody>
             <?php foreach ($recentMatches as $m): ?>
                 <tr>
-                    <td><?= e($m['match_date']) ?></td>
+                    <td><?= e(format_datetime($m['match_date'])) ?></td>
                     <td><?= e($m['status']) ?></td>
                     <td><?= $m['status'] === 'completed' ? e((string) $m['home_score'] . ' - ' . (string) $m['away_score']) : '-' ?></td>
                 </tr>

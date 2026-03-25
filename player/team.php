@@ -45,7 +45,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 
     <h2 class="h5">Teammates</h2>
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
+        <table class="table table-striped align-middle js-paginated-table">
             <thead>
                 <tr>
                     <th>Name</th>

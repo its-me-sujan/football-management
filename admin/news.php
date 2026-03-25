@@ -111,7 +111,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table id="newsTable" class="table table-striped table-hover align-middle mb-0">
+                <table id="newsTable" class="table table-striped table-hover align-middle mb-0 js-paginated-table">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -148,8 +148,8 @@ require_once __DIR__ . '/../app/views/partials/header.php';
                                     <span class="badge bg-secondary-subtle text-secondary-emphasis">Draft</span>
                                 <?php endif; ?>
                             </td>
-                            <td><?= e((string) ($row['published_at'] ?? '-')) ?></td>
-                            <td><?= e((string) $row['created_at']) ?></td>
+                            <td><?= e(format_datetime($row['published_at'] ?? null)) ?></td>
+                            <td><?= e(format_datetime($row['created_at'] ?? null)) ?></td>
                             <td class="text-center">
                                 <div class="d-inline-flex gap-1">
                                     <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#<?= e($viewModalId) ?>" title="View" aria-label="View">
@@ -188,7 +188,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
                     <div class="modal-body">
                         <h6 class="mb-2"><?= e($row['title']) ?></h6>
                         <p class="text-muted mb-2">Status: <?= (int) $row['is_published'] === 1 ? 'Published' : 'Draft' ?></p>
-                        <p class="text-muted mb-3">Published At: <?= e((string) ($row['published_at'] ?? '-')) ?></p>
+                        <p class="text-muted mb-3">Published At: <?= e(format_datetime($row['published_at'] ?? null)) ?></p>
                         <div class="border rounded p-3 bg-light-subtle"><?= nl2br(e($row['content'])) ?></div>
                     </div>
                 </div>
@@ -218,22 +218,9 @@ require_once __DIR__ . '/../app/views/partials/header.php';
         </div>
     </div>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
     <script>
         (function () {
             $(function () {
-                $('#newsTable').DataTable({
-                    pageLength: 8,
-                    lengthMenu: [[8, 15, 25, 50], [8, 15, 25, 50]],
-                    order: [[0, 'desc']],
-                    columnDefs: [
-                        { orderable: false, targets: 5 }
-                    ]
-                });
-
                 var formElement = document.getElementById('newsCreateForm');
                 var formMode = document.getElementById('newsFormMode');
                 var formId = document.getElementById('newsFormId');

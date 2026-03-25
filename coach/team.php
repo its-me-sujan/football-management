@@ -74,7 +74,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 <?php endif; ?>
 
 <div class="table-responsive">
-    <table class="table table-striped align-middle">
+    <table class="table table-striped align-middle js-paginated-table">
         <thead>
             <tr>
                 <th>Team</th>
