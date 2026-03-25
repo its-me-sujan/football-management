@@ -1,0 +1,205 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.custom-navbar {
+    background: rgba(13, 25, 44, 0.95);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.custom-navbar .navbar-brand {
+    color: #f8fbff;
+    letter-spacing: 0.2px;
+}
+
+.custom-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.custom-navbar .nav-link {
+    color: rgba(235, 242, 252, 0.92);
+    border-radius: 999px;
+    padding: 0.4rem 0.78rem;
+    transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link:focus,
+.custom-navbar .nav-link.active {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+}
+
+.custom-navbar .dropdown-menu {
+    border: 1px solid #d6dce5;
+    border-radius: 0.8rem;
+    box-shadow: 0 10px 22px rgba(16, 28, 47, 0.17);
+}
+
+.nav-role-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.62rem;
+    border-radius: 999px;
+    background: #f3f7ff;
+    color: #1d3f77;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.custom-navbar .nav-link-cta {
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.custom-navbar .nav-link-cta:hover,
+.custom-navbar .nav-link-cta:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 991.98px) {
+    .custom-navbar .navbar-nav {
+        gap: 0.3rem;
+    }
+
+    .custom-navbar .nav-role-badge {
+        margin: 0.3rem 0;
+    }
+}
+
+.weather-meta {
+    margin-bottom: 0.75rem;
+    color: #6c757d;
+}
+
+.weather-scroll {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.4rem;
+}
+
+.weather-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.weather-scroll::-webkit-scrollbar-thumb {
+    background: #b8bec5;
+    border-radius: 999px;
+}
+
+.weather-card {
+    position: relative;
+    flex: 0 0 calc((100% - 0.8rem) / 2);
+    min-width: 140px;
+    scroll-snap-align: start;
+    background: #ffffff;
+    border: 1px solid #eef1f4;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.weather-card-toggle {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.weather-icon {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.weather-time {
+    color: #888;
+    font-size: 11px;
+    margin-bottom: 8px;
+    word-break: break-word;
+}
+
+.weather-temp {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e74c3c;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.weather-category {
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.weather-card-panel {
+    display: none;
+}
+
+.weather-card:hover,
+.weather-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.weather-tooltip {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+    width: min(280px, calc(100vw - 1.5rem));
+    border: 1px solid #cfd5dc;
+    border-radius: 0.65rem;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(17, 30, 45, 0.2);
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #495057;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.weather-tooltip.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.weather-tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-right: 1px solid #cfd5dc;
+    border-bottom: 1px solid #cfd5dc;
+}
+
+@media (min-width: 768px) {
+    .weather-card {
+        flex-basis: calc((100% - (0.8rem * 3)) / 4);
+    }
+}
+
+@media (min-width: 1200px) {
+    .weather-card {
+        flex-basis: calc((100% - (0.8rem * 5)) / 6);
+    }
+}
