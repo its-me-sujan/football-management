@@ -1,5 +1,7 @@
 # Football Management System
 
+This site is available at [tacticus.gamer.gd](https://tacticus.gamer.gd).
+
 This project is structured for deployment with `index.php` at the root.
 
 ## Role pages
