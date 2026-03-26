@@ -240,8 +240,8 @@ require_once __DIR__ . '/app/views/partials/header.php';
                             $topTeamGround = trim((string) ($topTeam['home_ground'] ?? ''));
                             ?>
                             <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-3 mb-3">
-                                <div class="team-avatar mx-auto mx-sm-0">
-                                    <span><?= e($topTeamInitials !== '' ? $topTeamInitials : 'T') ?></span>
+                                <div class="team-avatar mx-auto mx-sm-0 px-2">
+                                    <span class="h5"><?= e($topTeamInitials !== '' ? $topTeamInitials : 'T') ?></span>
                                 </div>
                                 <div>
                                     <h4 class="h3 mb-1"><?= e($topTeamName) ?></h4>

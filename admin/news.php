@@ -220,7 +220,7 @@ require_once __DIR__ . '/../app/views/partials/header.php';
 
     <script>
         (function () {
-            $(function () {
+            document.addEventListener('DOMContentLoaded', function () {
                 var formElement = document.getElementById('newsCreateForm');
                 var formMode = document.getElementById('newsFormMode');
                 var formId = document.getElementById('newsFormId');
