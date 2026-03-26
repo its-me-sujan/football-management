@@ -942,8 +942,10 @@ a:hover {
 
 .hero-position-goalkeeper:hover,
 .hero-position-goalkeeper:focus-visible,
-.hero-position-center:hover,
-.hero-position-center:focus-visible,
+.hero-position-center-1:hover,
+.hero-position-center-1:focus-visible,
+.hero-position-center-2:hover,
+.hero-position-center-2:focus-visible,
 .hero-position-mid-center:hover,
 .hero-position-mid-center:focus-visible,
 .hero-position-striker:hover,
@@ -973,16 +975,21 @@ a:hover {
 }
 
 .hero-position-left {
-    left: 18%;
+    right: 10%;
 }
 
-.hero-position-center {
-    left: 50%;
+.hero-position-center-1 {
+    left: 40%;
+    transform: translateX(-50%);
+}
+
+.hero-position-center-2 {
+    left: 60%;
     transform: translateX(-50%);
 }
 
 .hero-position-right {
-    right: 18%;
+    left: 10%;
 }
 
 .hero-position-mid {
@@ -1004,24 +1011,26 @@ a:hover {
     right: 20%;
 }
 
-.hero-position-forward {
-    top: 74%;
+.hero-position-wing-left,
+.hero-position-wing-right {
+    top: 68%;
     background: rgba(255, 255, 255, 0.1);
 }
 
 .hero-position-wing-left {
-    left: 14%;
+    right: 14%;
 }
 
 .hero-position-striker {
     left: 50%;
+    top: 74%;
     transform: translateX(-50%);
     background: #a7f432;
     color: #101513;
 }
 
 .hero-position-wing-right {
-    right: 14%;
+    left: 14%;
 }
 
 .hero-sidecard {

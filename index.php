@@ -131,7 +131,7 @@ require_once __DIR__ . '/app/views/partials/header.php';
             <div class="hero-orbit hero-orbit-b"></div>
             <div class="hero-board">
                 <div class="hero-board-topbar">
-                    <span>3-3-3</span>
+                    <span>4-3-3</span>
                     <span>Live squad</span>
                     <span class="hero-board-dot"></span>
                 </div>
@@ -143,11 +143,12 @@ require_once __DIR__ . '/app/views/partials/header.php';
                     </div>
                     <div class="hero-pitch">
                         <div class="hero-position hero-position-goalkeeper">GK</div>
-                        <div class="hero-position hero-position-defender hero-position-left">CB</div>
-                        <div class="hero-position hero-position-defender hero-position-center">CB</div>
+                        <div class="hero-position hero-position-defender hero-position-left">LB</div>
+                        <div class="hero-position hero-position-defender hero-position-center-1">CB</div>
+                        <div class="hero-position hero-position-defender hero-position-center-2">CB</div>
                         <div class="hero-position hero-position-defender hero-position-right">RB</div>
                         <div class="hero-position hero-position-mid hero-position-mid-left">CM</div>
-                        <div class="hero-position hero-position-mid hero-position-mid-center">AM</div>
+                        <div class="hero-position hero-position-mid hero-position-mid-center">CM</div>
                         <div class="hero-position hero-position-mid hero-position-mid-right">CM</div>
                         <div class="hero-position hero-position-forward hero-position-wing-left">LW</div>
                         <div class="hero-position hero-position-forward hero-position-striker">ST</div>
