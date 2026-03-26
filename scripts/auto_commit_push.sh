@@ -4,7 +4,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
-INTERVAL_SECONDS="${INTERVAL_SECONDS:-600}"
+INTERVAL_SECONDS="${INTERVAL_SECONDS:-10}"
 MODE="${1:-loop}"
 
 SCOPES=(
