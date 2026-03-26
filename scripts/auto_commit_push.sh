@@ -6,6 +6,7 @@ cd "$REPO_ROOT"
 
 INTERVAL_SECONDS="${INTERVAL_SECONDS:-10}"
 MODE="${1:-loop}"
+HEARTBEAT_FILE="${HEARTBEAT_FILE:-scripts/.auto_commit_heartbeat.txt}"
 
 SCOPES=(
   auth
@@ -64,11 +65,32 @@ ensure_git_repo() {
     echo "Remote origin is not configured." >&2
     exit 1
   fi
+  
 }
+
+  toggle_heartbeat_change() {
+    mkdir -p "$(dirname "$HEARTBEAT_FILE")"
+
+    if [[ ! -f "$HEARTBEAT_FILE" ]]; then
+      printf 'auto-commit-heartbeat' > "$HEARTBEAT_FILE"
+    fi
+
+    if [[ -s "$HEARTBEAT_FILE" ]] && [[ "$(tail -c 1 "$HEARTBEAT_FILE" 2>/dev/null || true)" == $'\n' ]]; then
+      # Remove trailing newline.
+      local content
+      content="$(cat "$HEARTBEAT_FILE")"
+      printf '%s' "$content" > "$HEARTBEAT_FILE"
+    else
+      # Add trailing newline.
+      printf '\n' >> "$HEARTBEAT_FILE"
+    fi
+  }
 
 commit_once() {
   local branch message
   branch="$(git rev-parse --abbrev-ref HEAD)"
+
+    toggle_heartbeat_change
 
   git add -A
 
