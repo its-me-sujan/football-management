@@ -12,9 +12,10 @@ const FAN_COUNT = 2;
 const NEWS_COUNT = 20;
 const FIXTURE_EMAIL_DOMAIN = 'example.com';
 
-if (PHP_SAPI !== 'cli') {
-    http_response_code(400);
-    exit('This script must be run from CLI.' . PHP_EOL);
+$token = $_GET['token'] ?? '';
+if ($token !== 'PUT_A_LONG_RANDOM_TOKEN_HERE') {
+    http_response_code(403);
+    exit('Forbidden');
 }
 
 function fixtureEmail(string $kind, int $index): string
