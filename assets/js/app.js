@@ -8,6 +8,10 @@
 
 		window.jQuery('table.js-paginated-table').each(function () {
 			var tableElement = window.jQuery(this);
+			if (!tableElement.parent().hasClass('table-responsive')) {
+				tableElement.wrap('<div class="table-responsive"></div>');
+			}
+
 			if (window.jQuery.fn.DataTable.isDataTable(this)) {
 				return;
 			}
@@ -20,7 +24,35 @@
 		});
 	}
 
+	function enhanceTableActionIcons() {
+		var iconMap = {
+			view: 'bi-eye',
+			edit: 'bi-pencil-square',
+			delete: 'bi-trash',
+			del: 'bi-trash',
+			save: 'bi-floppy'
+		};
+
+		document.querySelectorAll('button.btn, a.btn').forEach(function (element) {
+			if (element.querySelector('svg, i.bi')) {
+				return;
+			}
+
+			var label = (element.textContent || '').trim().toLowerCase();
+			var iconClass = iconMap[label];
+			if (!iconClass) {
+				return;
+			}
+
+			var readableLabel = label === 'del' ? 'Delete' : (label.charAt(0).toUpperCase() + label.slice(1));
+			element.innerHTML = '<i class="bi ' + iconClass + '" aria-hidden="true"></i><span class="visually-hidden">' + readableLabel + '</span>';
+			element.setAttribute('title', readableLabel);
+			element.setAttribute('aria-label', readableLabel);
+		});
+	}
+
 	initTables();
+	enhanceTableActionIcons();
 
 	var weatherSection = document.getElementById('weather-section');
 	var weatherContainer = document.getElementById('weather-forecast');

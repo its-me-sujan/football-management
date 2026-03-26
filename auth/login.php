@@ -5,7 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../app/config/bootstrap.php';
 
 if (is_logged_in()) {
-    header('Location: ' . app_url('/actions/index.php'));
+    header('Location: ' . app_url('/index.php'));
     exit;
 }
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user !== false && password_verify($password, $user['password_hash'])) {
             login_user($user);
             set_flash('success', 'Welcome back, ' . $user['name'] . '.');
-            header('Location: ' . app_url('/actions/index.php'));
+            header('Location: ' . app_url('/index.php'));
             exit;
         }
 

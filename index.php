@@ -131,7 +131,7 @@ require_once __DIR__ . '/app/views/partials/header.php';
             <div class="hero-orbit hero-orbit-b"></div>
             <div class="hero-board">
                 <div class="hero-board-topbar">
-                    <span>4-3-3</span>
+                    <span>3-3-3</span>
                     <span>Live squad</span>
                     <span class="hero-board-dot"></span>
                 </div>
@@ -159,9 +159,7 @@ require_once __DIR__ . '/app/views/partials/header.php';
                         <small>Team rating</small>
                     </div>
                 </div>
-                <div class="hero-board-footer">
-                    <span class="hero-progress"><i></i></span>
-                </div>
+               
             </div>
         </div>
     </div>

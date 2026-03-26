@@ -11,23 +11,6 @@ CREATE TABLE IF NOT EXISTS users (
     UNIQUE KEY uq_users_email (email)
 ) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS actions (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(150) NOT NULL,
-    description TEXT NULL,
-    action_date DATE NOT NULL,
-    visibility ENUM('public', 'player', 'coach', 'admin') NOT NULL DEFAULT 'public',
-    created_by INT UNSIGNED NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    KEY idx_actions_created_by (created_by),
-    KEY idx_actions_date (action_date),
-    KEY idx_actions_visibility (visibility),
-    CONSTRAINT fk_actions_created_by FOREIGN KEY (created_by)
-        REFERENCES users(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-) ENGINE=InnoDB;
-
 CREATE TABLE IF NOT EXISTS coaches (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(120) NOT NULL,
@@ -191,3 +174,22 @@ CREATE TABLE IF NOT EXISTS news (
         ON UPDATE CASCADE
         ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+-- Backfill schema changes for existing databases where `players` may predate `profile_image`.
+SET @has_profile_image := (
+    SELECT COUNT(*)
+    FROM information_schema.COLUMNS
+    WHERE TABLE_SCHEMA = DATABASE()
+      AND TABLE_NAME = 'players'
+      AND COLUMN_NAME = 'profile_image'
+);
+
+SET @add_profile_image_sql := IF(
+    @has_profile_image = 0,
+    'ALTER TABLE players ADD COLUMN profile_image VARCHAR(255) NULL AFTER bio',
+    'SELECT ''players.profile_image already exists'''
+);
+
+PREPARE add_profile_image_stmt FROM @add_profile_image_sql;
+EXECUTE add_profile_image_stmt;
+DEALLOCATE PREPARE add_profile_image_stmt;

@@ -45,12 +45,6 @@ function role_rank(string $role): int
     };
 }
 
-function can_manage_actions(): bool
-{
-    $role = current_role();
-    return $role === 'coach' || $role === 'admin';
-}
-
 function can_manage_assignments(): bool
 {
     return is_coach() || is_admin();
@@ -92,40 +86,6 @@ function current_coach_id(PDO $pdo): ?int
     $row = $stmt->fetch();
 
     return $row === false ? null : (int) $row['id'];
-}
-
-function can_assign_visibility(string $visibility): bool
-{
-    $role = current_role();
-
-    if ($role === 'admin') {
-        return in_array($visibility, ['public', 'player', 'coach', 'admin'], true);
-    }
-
-    if ($role === 'coach') {
-        return in_array($visibility, ['public', 'player', 'coach'], true);
-    }
-
-    return false;
-}
-
-function can_view_visibility(string $visibility): bool
-{
-    return role_rank(current_role()) >= role_rank($visibility);
-}
-
-function can_edit_action(array $action): bool
-{
-    $user = current_user();
-    if ($user === null) {
-        return false;
-    }
-
-    if (current_role() === 'admin') {
-        return true;
-    }
-
-    return current_role() === 'coach' && (int) $action['created_by'] === (int) $user['id'];
 }
 
 function login_user(array $user): void

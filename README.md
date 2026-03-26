@@ -1,6 +1,6 @@
 # Football Management System
 
-This project is structured for deployment with `index.php` at the root and includes role-based football actions.
+This project is structured for deployment with `index.php` at the root.
 
 ## Role pages
 
@@ -29,11 +29,6 @@ This project is structured for deployment with `index.php` at the root and inclu
     login.php
     register.php
     logout.php
-  actions/
-    index.php
-    create.php
-    edit.php
-    delete.php
   app/
     .htaccess
     config/
@@ -62,5 +57,3 @@ This project is structured for deployment with `index.php` at the root and inclu
 
 - `app/.htaccess` denies direct browser access to app files on Apache.
 - User roles: `public`, `player`, `coach`, `admin`.
-- Only `coach` and `admin` can create actions.
-- `admin` can edit/delete any action; `coach` can edit/delete own actions.
