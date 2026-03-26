@@ -45,15 +45,3 @@ This project is structured for deployment with `index.php` at the root.
     schema.sql
 ```
 
-## Deploy to mi-linux
-
-1. Upload this project folder into `public_html`.
-2. Create `.env` from `.env.example`.
-3. Set `APP_URL` in `.env` to your deployment URL.
-4. Run `scripts/schema.sql` in MySQL.
-5. Update DB credentials in `.env`.
-
-## Notes
-
-- `app/.htaccess` denies direct browser access to app files on Apache.
-- User roles: `public`, `player`, `coach`, `admin`.
